@@ -3,10 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class LoginUI extends JFrame {
     private JTextField usernameField;
@@ -14,13 +11,12 @@ public class LoginUI extends JFrame {
 
     public LoginUI() {
         setTitle("Login");
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         initComponents();
 
-        setSize(300, 150);
-        setLocationRelativeTo(null); // Center the frame on screen
-        setVisible(true);
+        setLocationRelativeTo(null);
     }
 
     private void initComponents() {
@@ -58,33 +54,28 @@ public class LoginUI extends JFrame {
         constraints.gridx = 0;
         constraints.gridy = 2;
         constraints.gridwidth = 2;
+        constraints.anchor = GridBagConstraints.CENTER;
         panel.add(loginButton, constraints);
 
-        getContentPane().add(panel, BorderLayout.CENTER);
+        JButton registerButton = new JButton("Register");
+        registerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                openRegistrationUI();
+            }
+        });
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        constraints.gridwidth = 2;
+        constraints.anchor = GridBagConstraints.CENTER;
+        panel.add(registerButton, constraints);
+
+        add(panel);
     }
 
     private void login() {
-        String username = usernameField.getText().trim();
+        String username = usernameField.getText();
         String password = new String(passwordField.getPassword());
 
-        // Validate username and password
-        if (authenticate(username, password)) {
-            JOptionPane.showMessageDialog(this, "Login successful!");
-
-            // Open chat application UI
-            ChatApplicationUI chatUI = new ChatApplicationUI(username);
-            chatUI.setVisible(true);
-
-            // Close login window
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Invalid username or password. Please try again.");
-            usernameField.setText("");
-            passwordField.setText("");
-        }
-    }
-
-    private boolean authenticate(String username, String password) {
         Connection connection = DatabaseConnection.getConnection();
         if (connection != null) {
             try {
@@ -94,7 +85,13 @@ public class LoginUI extends JFrame {
                 preparedStatement.setString(2, password);
                 ResultSet resultSet = preparedStatement.executeQuery();
 
-                return resultSet.next(); // Return true if user exists with provided username and password
+                if (resultSet.next()) {
+                    dispose();
+                    new ChatApplicationUI(username).setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Invalid username or password");
+                }
+
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
@@ -105,12 +102,15 @@ public class LoginUI extends JFrame {
                 }
             }
         }
-        return false; // Return false if any exception occurs or user not found
+    }
+
+    private void openRegistrationUI() {
+        new RegistrationUI().setVisible(true);
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            new LoginUI();
+            new LoginUI().setVisible(true);
         });
     }
 }

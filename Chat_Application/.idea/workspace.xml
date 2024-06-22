@@ -35,7 +35,7 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.LoginUI">
+  <component name="RunManager" selected="Application.ChatServer">
     <configuration name="ChatClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ChatClient" />
       <module name="Chat_Application" />
@@ -76,7 +76,7 @@
       <workItem from="1719065817025" duration="446000" />
       <workItem from="1719066352737" duration="1395000" />
       <workItem from="1719072181786" duration="1533000" />
-      <workItem from="1719075284770" duration="2999000" />
+      <workItem from="1719075284770" duration="3559000" />
     </task>
     <servers />
   </component>
