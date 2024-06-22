@@ -60,8 +60,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.LoginUI" />
-        <item itemvalue="Application.ChatClient" />
         <item itemvalue="Application.ChatServer" />
+        <item itemvalue="Application.ChatClient" />
       </list>
     </recent_temporary>
   </component>
@@ -75,7 +75,8 @@
       <updated>1719065815550</updated>
       <workItem from="1719065817025" duration="446000" />
       <workItem from="1719066352737" duration="1395000" />
-      <workItem from="1719072181786" duration="298000" />
+      <workItem from="1719072181786" duration="1533000" />
+      <workItem from="1719075284770" duration="2999000" />
     </task>
     <servers />
   </component>
