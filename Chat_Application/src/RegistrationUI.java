@@ -11,7 +11,7 @@ public class RegistrationUI extends JFrame {
 
     public RegistrationUI() {
         setTitle("Registration");
-        setSize(300, 200);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         initComponents();
@@ -20,28 +20,50 @@ public class RegistrationUI extends JFrame {
     }
 
     private void initComponents() {
-        JPanel panel = new JPanel(new GridLayout(3, 2));
+        // Create the main panel with a GridBagLayout
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.insets = new Insets(10, 10, 10, 10);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
 
         JLabel usernameLabel = new JLabel("Username:");
-        usernameField = new JTextField();
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        panel.add(usernameLabel, constraints);
+
+        usernameField = new JTextField(20); // Increased size
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        panel.add(usernameField, constraints);
+
         JLabel passwordLabel = new JLabel("Password:");
-        passwordField = new JPasswordField();
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        panel.add(passwordLabel, constraints);
+
+        passwordField = new JPasswordField(20); // Increased size
+        constraints.gridx = 1;
+        constraints.gridy = 1;
+        panel.add(passwordField, constraints);
 
         JButton registerButton = new JButton("Register");
+        registerButton.setBackground(Color.decode("#5CE1E6"));
+        registerButton.setForeground(Color.decode("#00253B"));
+        registerButton.setOpaque(true);
+        registerButton.setBorderPainted(false);
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 registerUser();
             }
         });
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        constraints.gridwidth = 2;
+        constraints.anchor = GridBagConstraints.CENTER;
+        panel.add(registerButton, constraints);
 
-        panel.add(usernameLabel);
-        panel.add(usernameField);
-        panel.add(passwordLabel);
-        panel.add(passwordField);
-        panel.add(new JLabel()); // Placeholder for grid alignment
-        panel.add(registerButton);
-
-        add(panel);
+        // Center everything
+        add(panel, BorderLayout.CENTER);
     }
 
     private void registerUser() {

@@ -20,7 +20,15 @@ public class LoginUI extends JFrame {
     }
 
     private void initComponents() {
-        JPanel panel = new JPanel(new GridBagLayout());
+        // Create the main panel with a BorderLayout
+        JPanel mainPanel = new JPanel(new BorderLayout());
+
+        // Create a label with an image icon for the left side
+        JLabel imageLabel = new JLabel(new ImageIcon("assets/images/login_bg.png"));
+        imageLabel.setHorizontalAlignment(JLabel.CENTER);
+
+        // Create the form panel for the right side
+        JPanel formPanel = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -28,24 +36,28 @@ public class LoginUI extends JFrame {
         JLabel usernameLabel = new JLabel("Username:");
         constraints.gridx = 0;
         constraints.gridy = 0;
-        panel.add(usernameLabel, constraints);
+        formPanel.add(usernameLabel, constraints);
 
-        usernameField = new JTextField(15);
+        usernameField = new JTextField(20); // Increased size
         constraints.gridx = 1;
         constraints.gridy = 0;
-        panel.add(usernameField, constraints);
+        formPanel.add(usernameField, constraints);
 
         JLabel passwordLabel = new JLabel("Password:");
         constraints.gridx = 0;
         constraints.gridy = 1;
-        panel.add(passwordLabel, constraints);
+        formPanel.add(passwordLabel, constraints);
 
-        passwordField = new JPasswordField(15);
+        passwordField = new JPasswordField(20); // Increased size
         constraints.gridx = 1;
         constraints.gridy = 1;
-        panel.add(passwordField, constraints);
+        formPanel.add(passwordField, constraints);
 
         JButton loginButton = new JButton("Login");
+        loginButton.setBackground(Color.decode("#5CE1E6"));
+        loginButton.setForeground(Color.decode("#00253B"));
+        loginButton.setOpaque(true);
+        loginButton.setBorderPainted(false);
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 login();
@@ -55,9 +67,13 @@ public class LoginUI extends JFrame {
         constraints.gridy = 2;
         constraints.gridwidth = 2;
         constraints.anchor = GridBagConstraints.CENTER;
-        panel.add(loginButton, constraints);
+        formPanel.add(loginButton, constraints);
 
         JButton registerButton = new JButton("Register");
+        registerButton.setBackground(Color.decode("#5CE1E6"));
+        registerButton.setForeground(Color.decode("#00253B"));
+        registerButton.setOpaque(true);
+        registerButton.setBorderPainted(false);
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openRegistrationUI();
@@ -67,9 +83,18 @@ public class LoginUI extends JFrame {
         constraints.gridy = 3;
         constraints.gridwidth = 2;
         constraints.anchor = GridBagConstraints.CENTER;
-        panel.add(registerButton, constraints);
+        formPanel.add(registerButton, constraints);
 
-        add(panel);
+        // Add the image label and form panel to a JSplitPane
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, imageLabel, formPanel);
+        splitPane.setDividerLocation(400); // Set the initial position of the divider
+        splitPane.setResizeWeight(0.5); // Adjust the resize weight
+
+        // Add the split pane to the main panel
+        mainPanel.add(splitPane, BorderLayout.CENTER);
+
+        // Add the main panel to the frame
+        add(mainPanel);
     }
 
     private void login() {

@@ -210,7 +210,7 @@ public class ChatApplicationUI extends JFrame {
 
                 if ((currentUser.equals(sender) && selectedUser.equals(receiver)) ||
                         (currentUser.equals(receiver) && selectedUser.equals(sender))) {
-                    chatHistory.append("[" + LocalDateTime.now() + "] " + sender + ": " + msg + "\n");
+                    chatHistory.append(sender + ": " + msg + "\n");
                 }
             }
         }
