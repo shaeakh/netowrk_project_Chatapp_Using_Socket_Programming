@@ -38,7 +38,7 @@ public class LoginUI extends JFrame {
         constraints.gridy = 0;
         formPanel.add(usernameLabel, constraints);
 
-        usernameField = new JTextField(15);
+        usernameField = new JTextField(20); // Increased size
         constraints.gridx = 1;
         constraints.gridy = 0;
         formPanel.add(usernameField, constraints);
@@ -48,12 +48,16 @@ public class LoginUI extends JFrame {
         constraints.gridy = 1;
         formPanel.add(passwordLabel, constraints);
 
-        passwordField = new JPasswordField(15);
+        passwordField = new JPasswordField(20); // Increased size
         constraints.gridx = 1;
         constraints.gridy = 1;
         formPanel.add(passwordField, constraints);
 
         JButton loginButton = new JButton("Login");
+        loginButton.setBackground(Color.decode("#5CE1E6"));
+        loginButton.setForeground(Color.decode("#00253B"));
+        loginButton.setOpaque(true);
+        loginButton.setBorderPainted(false);
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 login();
@@ -66,6 +70,10 @@ public class LoginUI extends JFrame {
         formPanel.add(loginButton, constraints);
 
         JButton registerButton = new JButton("Register");
+        registerButton.setBackground(Color.decode("#5CE1E6"));
+        registerButton.setForeground(Color.decode("#00253B"));
+        registerButton.setOpaque(true);
+        registerButton.setBorderPainted(false);
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openRegistrationUI();
