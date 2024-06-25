@@ -107,6 +107,7 @@ public class ChatApplicationUI extends JFrame {
 
     private void fetchChatHistory(String user1, String user2) {
         Connection connection = DatabaseConnection.getConnection();
+
         if (connection != null) {
             try {
                 String query = "SELECT * FROM messages " +
@@ -118,6 +119,7 @@ public class ChatApplicationUI extends JFrame {
                 preparedStatement.setString(3, user2);
                 preparedStatement.setString(4, user1);
                 ResultSet resultSet = preparedStatement.executeQuery();
+
 
                 StringBuilder history = new StringBuilder();
                 while (resultSet.next()) {

@@ -13,9 +13,7 @@ public class LoginUI extends JFrame {
         setTitle("Login");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         initComponents();
-
         setLocationRelativeTo(null);
     }
 

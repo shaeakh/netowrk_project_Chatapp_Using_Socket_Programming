@@ -77,11 +77,29 @@
       <workItem from="1719066352737" duration="1395000" />
       <workItem from="1719072181786" duration="1533000" />
       <workItem from="1719075284770" duration="3559000" />
-      <workItem from="1719079218744" duration="2561000" />
+      <workItem from="1719079218744" duration="4816000" />
+      <workItem from="1719105967204" duration="2450000" />
+      <workItem from="1719110255164" duration="10602000" />
+      <workItem from="1719130151286" duration="1819000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/LoginUI.java</url>
+          <line>133</line>
+          <properties class="LoginUI" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
